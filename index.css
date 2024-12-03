@@ -1,0 +1,77 @@
+/* Ensure the Google Fonts are loaded */
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@500&family=Roboto:wght@100&display=swap');
+
+/* Outer div - ensuring it's centered */
+.outer-div {
+    width: 100%;
+    height: 100vh; /* Full viewport height */
+    background-color: bisque;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Inner card - Centering its content */
+.inner-card {
+    width: 50%;
+    background-color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px; /* Add some padding to the card */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Optional shadow */
+}
+
+/* Title inside the card - center-align */
+.card-title {
+    text-align: center;
+}
+
+/* Custom font for the Roboto Thin style */
+.roboto-thin {
+    font-family: "Roboto", sans-serif;
+    font-weight: 100;
+    font-style: normal;
+}
+
+/* Custom styling for text with Dancing Script */
+.text-style {
+    font-family: "Dancing Script", cursive;
+    font-weight: 500;
+    font-style: normal;
+    color: darkmagenta;
+}
+
+/* Main text style with Georgia font */
+.main-text-style {
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    color: brown;
+    font-weight: bold;
+}
+
+/* Style the checkboxes to make them larger */
+.form-check-input {
+    transform: scale(1.5); /* Increases the size of checkboxes */
+    margin-right: 10px; /* Optional, to add space between the checkbox and label */
+}
+
+/* Style the input fields */
+.form-control {
+    padding: 10px; /* Add padding to the input fields */
+    border-radius: 5px; /* Rounded corners for the input fields */
+    font-size: 16px; /* Increase font size */
+    border: 1px solid #ccc; /* Border color for input fields */
+    margin-top: 10px; /* Space between input fields */
+    margin-bottom: 10px; /* Space below the input fields */
+}
+
+/* Optional: Style for the label */
+.form-check-label {
+    font-size: 16px; /* Increase font size for labels */
+    margin-left: 10px; /* Space between checkbox and label */
+}
+
+/* Optional: Add a little margin to align the items */
+.item-align {
+    margin-bottom: 15px; /* Space between form groups */
+}
