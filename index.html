@@ -20,11 +20,11 @@
                 
                 <!-- Input field to add new tasks -->
                 <div class="form-group">
-                    <input type="text" class="form-control" id="newTaskInput" placeholder="Add a new task ">
+                    <input type="text" class="form-control" id="newTaskInput" placeholder="Add a new task">
                 </div>
                 
                 <!-- Button to add a new task -->
-                <button class="btn btn-danger" id="addTaskBtn">Add Task</button>
+                <button class="btn btn-success" id="addTaskBtn">Add Task</button>
 
                 <!-- Task List -->
                 <ul class="list-group mt-4" id="taskList">
@@ -35,7 +35,7 @@
     </div>
 
     <script>
-        // JavaScript to add task 
+        // JavaScript to add task with edit and delete buttons
         document.getElementById('addTaskBtn').addEventListener('click', function() {
             var taskInput = document.getElementById('newTaskInput');
             var taskText = taskInput.value.trim();
@@ -47,6 +47,7 @@
                 listItem.classList.add('list-group-item');
                 listItem.classList.add('d-flex');
                 listItem.classList.add('align-items-center');
+                listItem.classList.add('justify-content-between');  // Align items in a row, with space between them
 
                 var checkbox = document.createElement('input');
                 checkbox.type = 'checkbox';
@@ -56,9 +57,40 @@
 
                 var taskLabel = document.createElement('span');
                 taskLabel.textContent = taskText;
+                taskLabel.classList.add('mr-3');  // Add margin between text and buttons
 
+                // Buttons container
+                var buttonsContainer = document.createElement('div');
+                buttonsContainer.classList.add('ml-auto');  // Align buttons to the right
+
+                // Edit button
+                var editBtn = document.createElement('button');
+                editBtn.classList.add('btn', 'btn-info', 'mr-2');
+                editBtn.textContent = 'Edit';
+                editBtn.addEventListener('click', function() {
+                    var newTaskText = prompt('Edit Task:', taskLabel.textContent);
+                    if (newTaskText !== null && newTaskText.trim() !== '') {
+                        taskLabel.textContent = newTaskText.trim();
+                    }
+                });
+
+                // Delete button
+                var deleteBtn = document.createElement('button');
+                deleteBtn.classList.add('btn', 'btn-danger');
+                deleteBtn.textContent = 'Delete';
+                deleteBtn.addEventListener('click', function() {
+                    taskList.removeChild(listItem);
+                });
+
+                // Append buttons to the container
+                buttonsContainer.appendChild(editBtn);
+                buttonsContainer.appendChild(deleteBtn);
+
+                // Append all elements to the list item
                 listItem.appendChild(checkbox);
                 listItem.appendChild(taskLabel);
+                listItem.appendChild(buttonsContainer);
+
                 taskList.appendChild(listItem);
 
                 // Clear the input field after adding the task
