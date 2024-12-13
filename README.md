@@ -7,3 +7,6 @@ A simple and intuitive To-Do List application to manage daily tasks efficiently.
 - Mark tasks as completed.
 - Edit or delete tasks.
 - Responsive design for mobile and desktop use.
+## Technologies Used
+- **Frontend**: HTML, CSS, JavaScript
+- **Optional**: Framework/Library (e.g., React, Vue.js)
