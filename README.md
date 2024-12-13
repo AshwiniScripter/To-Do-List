@@ -27,3 +27,19 @@ open index.html
 1. Open the application in your browser.
 2. Add tasks using the input field and the 'Add' button.
 3. Manage your tasks by marking them as complete or deleting them.
+
+## Future Enhancements
+- User authentication and task persistence with a database.
+- Dark mode support.
+- Sort tasks by priority or due date.
+
+## Contributing
+Contributions are welcome! To contribute:
+1. Fork the repository.
+2. Create a new branch (`git checkout -b feature-name`).
+3. Commit your changes (`git commit -m 'Add some feature'`).
+4. Push to the branch (`git push origin feature-name`).
+5. Open a pull request.
+
+## License
+This project is licensed under the [MIT License](LICENSE).
