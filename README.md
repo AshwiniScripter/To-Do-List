@@ -16,3 +16,14 @@ To set up the project locally, follow these steps:
 ```bash
 # Clone the repository
 git clone https://github.com/yourusername/todo-list-app.git
+# Navigate to the project directory
+cd todo-list-app
+
+# Open the project in a browser
+open index.html
+```
+
+## Usage
+1. Open the application in your browser.
+2. Add tasks using the input field and the 'Add' button.
+3. Manage your tasks by marking them as complete or deleting them.
