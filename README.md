@@ -10,3 +10,9 @@ A simple and intuitive To-Do List application to manage daily tasks efficiently.
 ## Technologies Used
 - **Frontend**: HTML, CSS, JavaScript
 - **Optional**: Framework/Library (e.g., React, Vue.js)
+## Installation
+To set up the project locally, follow these steps:
+
+```bash
+# Clone the repository
+git clone https://github.com/yourusername/todo-list-app.git
