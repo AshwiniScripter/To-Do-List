@@ -16,8 +16,7 @@ To set up the project locally, follow these steps:
 ```bash
 # Clone the repository
 git clone https://github.com/yourusername/todo-list-app.git
-# Navigate to the project directory
-cd todo-list-app
+
 
 # Open the project in a browser
 open index.html
@@ -33,12 +32,6 @@ open index.html
 - Dark mode support.
 - Sort tasks by priority or due date.
 
-## Contributing
-Contributions are welcome! To contribute:
-1. Fork the repository.
-2. Create a new branch (`git checkout -b feature-name`).
-3. Commit your changes (`git commit -m 'Add some feature'`).
-4. Push to the branch (`git push origin feature-name`).
-5. Open a pull request.
+
 
 
