@@ -35,68 +35,98 @@
     </div>
 
     <script>
-        // JavaScript to add task with edit and delete buttons
-        document.getElementById('addTaskBtn').addEventListener('click', function() {
-            var taskInput = document.getElementById('newTaskInput');
-            var taskText = taskInput.value.trim();
+      // Load saved tasks when the page loads
+      window.addEventListener("load", function () {
+        const savedTasks = JSON.parse(localStorage.getItem("tasks")) || [];
+        savedTasks.forEach(addTaskToDOM);
+      });
 
-            if (taskText !== "") {
-                var taskList = document.getElementById('taskList');
+      document
+        .getElementById("addTaskBtn")
+        .addEventListener("click", function () {
+          var taskInput = document.getElementById("newTaskInput");
+          var taskText = taskInput.value.trim();
 
-                var listItem = document.createElement('li');
-                listItem.classList.add('list-group-item');
-                listItem.classList.add('d-flex');
-                listItem.classList.add('align-items-center');
-                listItem.classList.add('justify-content-between');  // Align items in a row, with space between them
-
-                var checkbox = document.createElement('input');
-                checkbox.type = 'checkbox';
-                checkbox.classList.add('form-check-input');
-                checkbox.style.transform = 'scale(1.5)';
-                checkbox.classList.add('mr-3');
-
-                var taskLabel = document.createElement('span');
-                taskLabel.textContent = taskText;
-                taskLabel.classList.add('mr-3');  // Add margin between text and buttons
-
-                // Buttons container
-                var buttonsContainer = document.createElement('div');
-                buttonsContainer.classList.add('ml-auto');  // Align buttons to the right
-
-                // Edit button
-                var editBtn = document.createElement('button');
-                editBtn.classList.add('btn', 'btn-info', 'mr-2');
-                editBtn.textContent = 'Edit';
-                editBtn.addEventListener('click', function() {
-                    var newTaskText = prompt('Edit Task:', taskLabel.textContent);
-                    if (newTaskText !== null && newTaskText.trim() !== '') {
-                        taskLabel.textContent = newTaskText.trim();
-                    }
-                });
-
-                // Delete button
-                var deleteBtn = document.createElement('button');
-                deleteBtn.classList.add('btn', 'btn-danger');
-                deleteBtn.textContent = 'Delete';
-                deleteBtn.addEventListener('click', function() {
-                    taskList.removeChild(listItem);
-                });
-
-                // Append buttons to the container
-                buttonsContainer.appendChild(editBtn);
-                buttonsContainer.appendChild(deleteBtn);
-
-                // Append all elements to the list item
-                listItem.appendChild(checkbox);
-                listItem.appendChild(taskLabel);
-                listItem.appendChild(buttonsContainer);
-
-                taskList.appendChild(listItem);
-
-                // Clear the input field after adding the task
-                taskInput.value = "";
-            }
+          if (taskText !== "") {
+            addTaskToDOM(taskText);
+            saveTask(taskText);
+            taskInput.value = "";
+          }
         });
+
+      function addTaskToDOM(taskText) {
+        var taskList = document.getElementById("taskList");
+
+        var listItem = document.createElement("li");
+        listItem.classList.add(
+          "list-group-item",
+          "d-flex",
+          "align-items-center",
+          "justify-content-between",
+        );
+
+        var checkbox = document.createElement("input");
+        checkbox.type = "checkbox";
+        checkbox.classList.add("form-check-input", "mr-3");
+        checkbox.style.transform = "scale(1.5)";
+
+        var taskLabel = document.createElement("span");
+        taskLabel.textContent = taskText;
+        taskLabel.classList.add("mr-3");
+
+        var buttonsContainer = document.createElement("div");
+        buttonsContainer.classList.add("ml-auto");
+
+        var editBtn = document.createElement("button");
+        editBtn.classList.add("btn", "btn-info", "mr-2");
+        editBtn.textContent = "Edit";
+        editBtn.addEventListener("click", function () {
+          var newTaskText = prompt("Edit Task:", taskLabel.textContent);
+          if (newTaskText !== null && newTaskText.trim() !== "") {
+            // Update localStorage
+            updateTask(taskLabel.textContent, newTaskText.trim());
+            taskLabel.textContent = newTaskText.trim();
+          }
+        });
+
+        var deleteBtn = document.createElement("button");
+        deleteBtn.classList.add("btn", "btn-danger");
+        deleteBtn.textContent = "Delete";
+        deleteBtn.addEventListener("click", function () {
+          taskList.removeChild(listItem);
+          deleteTask(taskLabel.textContent);
+        });
+
+        buttonsContainer.appendChild(editBtn);
+        buttonsContainer.appendChild(deleteBtn);
+
+        listItem.appendChild(checkbox);
+        listItem.appendChild(taskLabel);
+        listItem.appendChild(buttonsContainer);
+
+        taskList.appendChild(listItem);
+      }
+
+      function saveTask(task) {
+        let tasks = JSON.parse(localStorage.getItem("tasks")) || [];
+        tasks.push(task);
+        localStorage.setItem("tasks", JSON.stringify(tasks));
+      }
+
+      function deleteTask(task) {
+        let tasks = JSON.parse(localStorage.getItem("tasks")) || [];
+        tasks = tasks.filter((t) => t !== task);
+        localStorage.setItem("tasks", JSON.stringify(tasks));
+      }
+
+      function updateTask(oldTask, newTask) {
+        let tasks = JSON.parse(localStorage.getItem("tasks")) || [];
+        const index = tasks.indexOf(oldTask);
+        if (index !== -1) {
+          tasks[index] = newTask;
+          localStorage.setItem("tasks", JSON.stringify(tasks));
+        }
+      }
     </script>
 </body>
 </html>
